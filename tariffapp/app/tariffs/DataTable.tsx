@@ -14,7 +14,6 @@ interface Props {
 }
 
 const DataTable = ({ tariffs }: Props) => {
-  console.log("hello world");
   return (
     <div className="w-full mt-5">
       <div className="rounded-md sm:border">
