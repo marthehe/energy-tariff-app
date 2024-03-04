@@ -22,7 +22,11 @@ import { Tariff } from "@prisma/client";
 
 type TariffFormData = z.infer<typeof tariffSchema>;
 
-const TariffForm = () => {
+interface Props {
+  tariff?: Tariff;
+}
+
+const TariffForm = ({ tariff }: Props) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
 
@@ -36,7 +40,13 @@ const TariffForm = () => {
       setIsSubmitting(true);
       setError("");
 
-      await axios.post("/api/tariffs", values);
+      if (tariff) {
+        await axios.patch(`/api/tariffs/${tariff.id}`, values);
+        return;
+      } else {
+        await axios.post("/api/tariffs", values);
+      }
+
       setIsSubmitting(false);
       router.push("/tariffs");
       router.refresh();
@@ -57,6 +67,7 @@ const TariffForm = () => {
           <FormField
             control={form.control}
             name="name"
+            defaultValue={tariff?.name}
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Tariff Name</FormLabel>
@@ -70,6 +81,7 @@ const TariffForm = () => {
           <Controller
             name="description"
             control={form.control}
+            defaultValue={tariff?.description}
             render={({ field }) => (
               <SimpleMdeReact placeholder="Description" {...field} />
             )}
@@ -79,6 +91,7 @@ const TariffForm = () => {
             <FormField
               control={form.control}
               name="status"
+              defaultValue={tariff?.status}
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Status</FormLabel>
@@ -88,7 +101,10 @@ const TariffForm = () => {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Status..." />
+                        <SelectValue
+                          placeholder="Status..."
+                          defaultValue={tariff?.status}
+                        />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -101,7 +117,7 @@ const TariffForm = () => {
             />
           </div>
           <Button type="submit" disabled={isSubmitting}>
-            Submit
+            {tariff ? "Update Tariff" : "Create Tariff"}
           </Button>
         </form>
       </Form>

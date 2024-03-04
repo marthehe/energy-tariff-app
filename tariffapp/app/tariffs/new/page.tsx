@@ -5,8 +5,8 @@ const TariffForm = dynamic(() => import("@/components/TariffForm"), {
   ssr: false,
 });
 
-const NewTicket = () => {
+const NewTariff = () => {
   return <TariffForm />;
 };
 
-export default NewTicket;
+export default NewTariff;
