@@ -14,9 +14,8 @@ datasource db {
 model Tariff {
   id        Int      @id @default(autoincrement())
   name      String   @db.VarChar(255)
-  price     Float
   description String @db.Text
-  Status Status @default(NOT_ACTIVE)
+  status Status @default(NOT_ACTIVE)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

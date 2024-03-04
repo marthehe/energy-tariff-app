@@ -21,7 +21,6 @@ const DataTable = ({ tariffs }: Props) => {
           <TableHeader>
             <TableRow>
               <TableHead>Name</TableHead>
-              <TableHead>Price</TableHead>
               <TableHead>Description</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Created At</TableHead>
@@ -33,9 +32,8 @@ const DataTable = ({ tariffs }: Props) => {
               ? tariffs.map((tariff) => (
                   <TableRow key={tariff.id} data-href="/">
                     <TableCell>{tariff.name} </TableCell>
-                    <TableCell>{tariff.price} </TableCell>
                     <TableCell>{tariff.description} </TableCell>
-                    <TableCell>{tariff.Status} </TableCell>
+                    <TableCell>{tariff.status} </TableCell>
                     <TableCell>
                       {tariff.createdAt.toLocaleDateString()}{" "}
                     </TableCell>

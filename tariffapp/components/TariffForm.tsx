@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "./ui/form";
 import { tariffSchema } from "@/ValidationSchemas/tariff";
 import { z } from "zod";
@@ -15,16 +15,36 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { Status } from "@prisma/client";
+import { Button } from "./ui/button";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { Tariff } from "@prisma/client";
 
 type TariffFormData = z.infer<typeof tariffSchema>;
 
 const TariffForm = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  const router = useRouter();
   const form = useForm<TariffFormData>({
     resolver: zodResolver(tariffSchema),
   });
+
   async function onSubmit(values: z.infer<typeof tariffSchema>) {
-    console.log(values);
+    try {
+      setIsSubmitting(true);
+      setError("");
+
+      await axios.post("/api/tariffs", values);
+      setIsSubmitting(false);
+      router.push("/tariffs");
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+      setError("Unknown Error");
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -46,18 +66,7 @@ const TariffForm = () => {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="price"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Tariff Price</FormLabel>
-                <FormControl>
-                  <Input placeholder="Tariff Price..." {...field} />
-                </FormControl>
-              </FormItem>
-            )}
-          />
+
           <Controller
             name="description"
             control={form.control}
@@ -69,7 +78,7 @@ const TariffForm = () => {
           <div className="flex w-full space-x-4">
             <FormField
               control={form.control}
-              name="Status"
+              name="status"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Status</FormLabel>
@@ -91,6 +100,9 @@ const TariffForm = () => {
               )}
             />
           </div>
+          <Button type="submit" disabled={isSubmitting}>
+            Submit
+          </Button>
         </form>
       </Form>
     </div>
