@@ -7,6 +7,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tariff } from "@prisma/client";
+import Link from "next/link";
 import React from "react";
 
 interface Props {
@@ -31,7 +32,9 @@ const DataTable = ({ tariffs }: Props) => {
             {tariffs
               ? tariffs.map((tariff) => (
                   <TableRow key={tariff.id} data-href="/">
-                    <TableCell>{tariff.name} </TableCell>
+                    <TableCell>
+                      <Link href={`/tariffs/${tariff.id}`}>{tariff.name}</Link>{" "}
+                    </TableCell>
                     <TableCell>{tariff.description} </TableCell>
                     <TableCell>{tariff.status} </TableCell>
                     <TableCell>

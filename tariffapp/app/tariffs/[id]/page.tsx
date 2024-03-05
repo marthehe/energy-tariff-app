@@ -1,5 +1,6 @@
 import React from "react";
 import prisma from "@/prisma/db";
+import { Tariff } from "@prisma/client";
 import TariffDetail from "./TariffDetail";
 
 interface Props {
