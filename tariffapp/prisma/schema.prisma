@@ -18,9 +18,25 @@ model Tariff {
   status Status @default(NOT_ACTIVE)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  assignedToUserId Int?
+  assignedToUser   User?    @relation(fields: [assignedToUserId], references: [id])
 }
 
 enum Status {
   ACTIVE
   NOT_ACTIVE
+}
+
+model User {
+  id              Int      @id @default(autoincrement())
+  name            String
+  username        String   @unique
+  password        String
+  role            Role     @default(USER)
+  assignedTariff Tariff[]
+}
+
+enum Role {
+  ADMIN
+  USER
 }
