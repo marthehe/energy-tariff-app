@@ -41,7 +41,7 @@ const TariffForm = ({ tariff }: Props) => {
       setError("");
 
       if (tariff) {
-        await axios.patch(`/api/tariffs/${tariff.id}`, values);
+        await axios.patch(`/api/tariffs/` + tariff.id, values);
         return;
       } else {
         await axios.post("/api/tariffs", values);

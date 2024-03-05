@@ -36,3 +36,19 @@ export async function PATCH(request: NextRequest, { params }: Props) {
 
   return NextResponse.json(updateTariff, { status: 200 });
 }
+
+export async function DELETE(request: NextRequest, { params }: Props) {
+  const tariff = await prisma.tariff.findUnique({
+    where: { id: parseInt(params.id) },
+  });
+
+  if (!tariff) {
+    return NextResponse.json({ error: "Tariff Not Found" }, { status: 404 });
+  }
+
+  await prisma.tariff.delete({
+    where: { id: tariff.id },
+  });
+
+  return NextResponse.json({ message: "Tariff Deleted" });
+}

@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import ReactMarkDown from "react-markdown";
+import DeleteButton from "./DeleteButton";
 
 interface Props {
   tariff: Tariff;
@@ -61,14 +62,7 @@ const TariffDetail = ({ tariff }: Props) => {
         >
           Edit Tariff
         </Link>
-        <Link
-          href={`/tariffs/delete/${tariff.id}`}
-          className={`${buttonVariants({
-            variant: "default",
-          })}`}
-        >
-          Delete Tariff
-        </Link>
+        <DeleteButton tariffId={tariff.id} />
       </div>
     </div>
   );
