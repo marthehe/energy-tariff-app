@@ -1,3 +1,6 @@
+//This Tailwind CSS configuration file sets up the framework for a project, specifying paths to look for classes, enabling dark mode, customizing the theme with colors, container sizes, border radii, animations, and including additional plugins for more features.
+//The use of CSS variables for colors and sizes facilitates easy theming and customization across the project.
+
 import type { Config } from "tailwindcss";
 
 const config = {

@@ -1,3 +1,24 @@
+/*This code details a React component named TariffForm designed for creating or updating tariff information. The form leverages react-hook-form for form handling and validation, zod for schema definition, and integrates with an API using axios for data submission. 
+Here's a breakdown of its features and functionality:
+
+State Management: Utilizes useState to manage form submission status (isSubmitting) and display any errors (error).
+
+Form Validation: Uses zod to define a validation schema (tariffSchema) for tariff data, ensuring inputs meet specified requirements.
+
+Form Handling: Employs react-hook-form enhanced with zodResolver for seamless integration of zod validation. This setup provides efficient form state management and validation feedback.
+
+Custom Input Components: Includes custom UI components (e.g., Input, Button) and third-party components like SimpleMdeReact for a markdown editor and @radix-ui/react-select for custom select inputs. 
+These components are styled and used for form fields like name, description, and status.
+
+Conditional Form Behavior: The form adapts to either create a new tariff or update an existing one based on the presence of a tariff prop, modifying API requests (POST for creation and PATCH for updates) and form default values accordingly.
+
+Navigation and Feedback: After successful form submission, navigates to a list view of tariffs and provides immediate UI feedback by refreshing the page. Error handling is implemented to display messages to the user in case of API request failures.
+
+UI Styling: Styles are applied for visual enhancement, including rounded borders and padding around the form, and error messages are styled for visibility.
+
+Overall, TariffForm encapsulates the functionality required for managing tariff data within a web application, providing an intuitive interface for users to input data, validated against predefined rules, 
+and seamlessly integrated with backend services for data persistence.*/
+
 "use client";
 import React, { useState } from "react";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "./ui/form";

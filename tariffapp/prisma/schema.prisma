@@ -1,6 +1,38 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+//This code is a Prisma schema definition, which is used to configure a Prisma Client and define the structure of your database. 
+//The schema serves multiple purposes, including specifying the database type, defining models that represent tables in your database, and setting up relations between these models. Here's a breakdown of the key components:
+
+//Generator Block: This block specifies that the Prisma Client should be generated using the JavaScript client. The provider is set to "prisma-client-js", indicating the use of Prisma's JavaScript client library.
+
+//Datasource Block: This block defines the database connection details. It specifies that the database provider is MySQL, and the connection URL is sourced from an environment variable called "DATABASE_URL". 
+//Additionally, it sets the relationMode to "prisma", indicating the usage of Prisma's native relation handling.
+
+//Model Tariff: Represents a table in the MySQL database for tariffs, with the following fields:
+
+//id: An integer serving as the unique identifier and primary key, auto-incremented for each new record.
+//name: A variable character string up to 255 characters, storing the name of the tariff.
+//: A text field for a more detailed description of the tariff.
+//status: An enum type called Status with possible values of "ACTIVE" or "NOT_ACTIVE", defaulting to "NOT_ACTIVE". This indicates the current status of the tariff.
+//createdAt: A datetime field that automatically captures the creation time of the record.
+//updatedAt: A datetime field that updates every time the record is modified.
+//: An optional integer field that, if present, refers to the id of a user to whom the tariff is assigned.
+//assignedToUser: An optional relation to a User, establishing a connection between a tariff and a user based on the assignedToUserId.
+//Enum Status: Defines the possible states for a tariff's status, which include "ACTIVE" and "NOT_ACTIVE".
+
+//Model User: Represents a table in the MySQL database for users, with fields for an id, name, username, password, and role. Specifics include:
+
+//id: The unique identifier and primary key, auto-incremented.
+//name: A string for the user's name.
+//username: A unique string for the user's username.
+//password: A string for the user's password.
+//role: An enum type called Role with possible values of "ADMIN" or "USER", defaulting to "USER".
+//assignedTariff: Establishes a one-to-many relation from User to Tariff, indicating that a user can have multiple tariffs assigned.
+//Enum Role: Defines the possible roles for a user, which include "ADMIN" for administrative users and "USER" for regular users.
+
+// schema effectively sets up a simple yet functional database structure for managing tariffs and users, including their roles, statuses, and relationships between tariffs and users.
+
 generator client {
   provider = "prisma-client-js"
 }

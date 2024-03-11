@@ -1,3 +1,25 @@
+/*This code outlines a React component named UserForm, designed to create or update user information within a web application. It leverages several React libraries and custom UI components to achieve a clean and functional user interface for form handling.
+
+Key aspects of the UserForm component include:
+
+State Management: Utilizes useState to manage form submission status (isSubmitting) and to store any errors that occur during the form submission process (error).
+
+Form Validation: Integrates zod for schema-based form validation, ensuring that user input adheres to specified validation rules before submission.
+
+Form Handling: Employs react-hook-form for managing form states and events, enhancing form handling efficiency with features like automatic form validation.
+
+Custom UI Components: Uses custom form and input components (e.g., Form, FormField, Input, Select) for a consistent and styled user interface. These components are part of a custom UI library defined in ./ui.
+
+Conditional Rendering: Depending on whether a user prop is provided, the form adjusts to either create a new user or update an existing user's information. This includes modifying form field default values and the submit button text.
+
+Role Selection: Incorporates a Select component to choose the user's role (ADMIN or USER), demonstrating a more interactive form element for role assignment.
+
+API Integration: Uses axios for sending HTTP requests (POST for creating and PATCH for updating users) to the server-side API based on the form submission context.
+
+Navigation and Refresh: Leverages Next.js's useRouter for navigating to a specific route upon successful form submission and optionally refreshing the page to reflect the latest changes.
+
+The overall structure and logic encapsulate both form construction and handling logic within a single component, making it a reusable and modular part of the application's user management system.*/
+
 "use client";
 import React, { useState } from "react";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "./ui/form";
