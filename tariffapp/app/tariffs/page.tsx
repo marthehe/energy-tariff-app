@@ -16,17 +16,13 @@ const Tariffs = async () => {
 
   return (
     <div>
-      /* Rendering a Link component to navigate to the page for creating new
-      tariffs. The className is dynamically determined by the buttonVariants
-      function for styling. */
       <Link
         href="/tariffs/new"
         className={buttonVariants({ variant: "default" })}
       >
         New Ticket
       </Link>
-      /* Rendering the DataTable component, passing the fetched tariffs as a
-      prop to display them */
+
       <DataTable tariffs={tariffs} />
     </div>
   );
