@@ -16,7 +16,6 @@ const MainNav = async () => {
   // Fetching the current session information using next-auth's getServerSession with options
   const session = await getServerSession(options);
 
-  // Returning the JSX for the MainNav component
   return (
     <div className="flex justify-between">
       <MainNavLinks role={session?.user.role} />
