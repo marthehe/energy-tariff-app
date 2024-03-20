@@ -1,29 +1,78 @@
 # Energy Tariff App
 
-This is a [Next.js](https://nextjs.org/) project designed to help users find and manage their energy tariffs efficiently. It was bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is the Energy Tariff App, a Next.js application for managing energy tariffs.
 
 ## Getting Started
 
-First, run the development server:
+To get the project up and running on your local machine for development and testing purposes, follow these instructions.
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- Node.js (LTS version recommended)
+- npm (comes with Node.js)
+- Git
+
+### Installation
+
+1. Clone the repository to your local machine using Git:
+
+   ```bash
+   git clone https://github.com/marthehe/energy-tariff-app.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd energy-tariff-app/tariffapp
+   ```
+
+3. Install the project dependencies:
+   ```bash
+   npm install
+   ```
+
+````
+
+### Environment Variables
+
+Set up the necessary environment variables in a .env.local file in the root of the tariffapp directory. Refer to the .env.example file for required variables.
+
+### Running the Application
+
+To run the application in development mode, use the following command:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+````
+
+The application will start on http://localhost:3000 by default. Open this URL in your web browser to view the app.
+
+### Building for Production
+
+To build the application for production, run:
+
+```bash
+npm run built
+
 ```
 
-Open http://localhost:3000 with your browser to see the result.
+To start the application in production mode, run:
 
-You can start editing the page by modifying app/page.tsx. The page auto-updates as you edit the file.
+```bash
+npm start
 
-This project uses next/font to automatically optimize and load Inter, a custom Google Font.
+```
 
-Learn More
-To learn more about Next.js, take a look at the following resources:
+### Testing
 
-Next.js Documentation - learn about Next.js features and API.
-Learn Next.js - an interactive Next.js tutorial.
+To run the automated tests for this system, run:
+
+```bash
+npm test
+
+```
+
+This command will execute all tests and provide a report of the results.
