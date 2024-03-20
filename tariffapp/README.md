@@ -33,8 +33,6 @@ Before you begin, ensure you have the following installed:
    npm install
    ```
 
-````
-
 ### Environment Variables
 
 Set up the necessary environment variables in a .env.local file in the root of the tariffapp directory. Refer to the .env.example file for required variables.
@@ -46,7 +44,7 @@ To run the application in development mode, use the following command:
 ```bash
 npm run dev
 
-````
+```
 
 The application will start on http://localhost:3000 by default. Open this URL in your web browser to view the app.
 
